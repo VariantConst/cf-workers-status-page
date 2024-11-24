@@ -1,39 +1,54 @@
 settings:
   title: 'Status Page'
-  url: 'https://status-page.eidam.dev' # used for Slack messages
-  logo: logo-192x192.png # image in ./public/ folder
-  daysInHistogram: 90 # number of days you want to display in histogram
-  collectResponseTimes: true # collects avg response times from CRON locations
+  url: 'https://status-page.eidam.dev' # used for Slack & Discord notifications
+  logo: logo-192x192.png # image located in the ./public/ folder
+  daysInHistogram: 90 # number of days displayed in the histogram
+  collectResponseTimes: false # experimental feature, enable only for <5 monitors or on paid plans
 
+  # customizable texts across the status page
   allmonitorsOperational: 'All Systems Operational'
   notAllmonitorsOperational: 'Not All Systems Operational'
   monitorLabelOperational: 'Operational'
   monitorLabelNotOperational: 'Not Operational'
-  monitorLabelNoData: 'No data'
-  dayInHistogramNoData: 'No data'
-  dayInHistogramOperational: 'All good'
-  dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
+  monitorLabelNoData: 'No Data'
+  dayInHistogramNoData: 'No Data'
+  dayInHistogramOperational: 'All Good'
+  dayInHistogramNotOperational: 'Some Checks Failed'
 
+# list of monitors
 monitors:
-  - id: workers-cloudflare-com # unique identifier
-    name: workers.cloudflare.com
-    description: 'You write code. They handle the rest.' # default=empty
-    url: 'https://workers.cloudflare.com/' # URL to fetch
-    method: GET # default=GET
-    expectStatus: 200 # operational status, default=200
-    followRedirect: false # should fetch follow redirects, default=false
-    linkable: false # allows the title to be a link, default=true
-
-  - id: www-cloudflare-com
-    name: www.cloudflare.com
-    description: 'Built for anything connected to the Internet.'
-    url: 'https://www.cloudflare.com'
+  - id: camera-pku-edu-cn
+    name: camera.pku.edu.cn
+    description: 'Official website for Camera services at Peking University ***'
+    url: 'https://camera.pku.edu.cn/'
     method: GET
     expectStatus: 200
-    linkable: true # allows the title to be a link, default=true
+    followRedirect: false
+    linkable: true
 
-  - id: blog-cloudflare-com
-    name: The Cloudflare Blog
-    url: 'https://blog.cloudflare.com/'
+  - id: ci-idm-pku-edu-cn
+    name: ci.idm.pku.edu.cn
+    description: 'Official website for CI IDM services at Peking University ***'
+    url: 'https://ci.idm.pku.edu.cn/'
     method: GET
     expectStatus: 200
+    followRedirect: false
+    linkable: true
+
+  - id: aiic-pku-edu-cn
+    name: aiic.pku.edu.cn
+    description: 'Official website for AIIC services at Peking University ***'
+    url: 'https://aiic.pku.edu.cn/'
+    method: GET
+    expectStatus: 200
+    followRedirect: false
+    linkable: true
+
+  - id: milc-pku-edu-cn
+    name: milc.pku.edu.cn
+    description: 'Official website for MILC services at Peking University ***'
+    url: 'https://milc.pku.edu.cn/'
+    method: GET
+    expectStatus: 200
+    followRedirect: false
+    linkable: true
